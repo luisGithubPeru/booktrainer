@@ -3,7 +3,7 @@ package com.beto.booktrainer.view;
 import javax.swing.*;
 import java.io.File;
 
-public class BookChooseView {
+public class BookCreateView {
 
     public void render(final Runnable runApprove, final Runnable runCancel) {
 
