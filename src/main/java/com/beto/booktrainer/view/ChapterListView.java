@@ -11,15 +11,18 @@ public class ChapterListView {
 
     private MyFrame myFrame = MyFrame.getInstance();
 
-    public void render(List list, final Runnable runOnCreate) {
-        JButton jButtonCreate = new JButton("Nuevo Capitulo");
+    public void render(List list, final Runnable runOnChapterCreate, Runnable runReturn) {
+        JButton btnCreateChapter = new JButton("Nuevo Capitulo");
+        JButton btnReturn = new JButton("Volver");
+        btnReturn.addActionListener((e) -> runReturn.run());
         JList jList = new JList();
         jList.setListData(list.toArray());
         jList.setVisibleRowCount(10);
-        jButtonCreate.addActionListener((e)-> runOnCreate.run());
+        btnCreateChapter.addActionListener((e) -> runOnChapterCreate.run());
         JPanel jPanel = new JPanel();
         jPanel.add(jList);
-        jPanel.add(jButtonCreate);
+        jPanel.add(btnCreateChapter);
+        jPanel.add(btnReturn);
         myFrame.getContentPane().removeAll();
         myFrame.getContentPane().add(jPanel);
         myFrame.pack();

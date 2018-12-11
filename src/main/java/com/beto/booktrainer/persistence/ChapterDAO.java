@@ -11,17 +11,35 @@ import java.util.List;
 
 public class ChapterDAO {
 
-    public List<Chapter> listChapters(String bookID) {
-        List<Chapter> chapters = new ArrayList();
+    List<Chapter> chapters;
+
+    public ChapterDAO() {
+        chapters = new ArrayList();
         Chapter chapter = new Chapter("Chapter 1");
         chapter.setPage(10, 20);
         chapters.add(chapter);
-        chapter = new Chapter("Chapter 2");
-        chapter.setPage(25, 30);
-        chapter.setPage(35, 38);
-        chapters.add(chapter);
+    }
+
+    public List<Chapter> listChapters(String bookID) {
         return chapters;
     }
+
+    public void addChapter(String name, String pages) {
+        if (name.isEmpty() || pages.isEmpty())
+            return;
+        Chapter newChapter = new Chapter(name);
+        pages = pages.trim();
+        String[] pagesRequest = pages.split(",");
+        for (String i : pagesRequest) {
+            if (i.indexOf("-") > -1) {
+                String pageInterval[] = i.split("-");
+                newChapter.setPage(Integer.parseInt(pageInterval[0]), Integer.parseInt(pageInterval[1]));
+            } else
+                newChapter.setPage(Integer.parseInt(i));
+        }
+        chapters.add(newChapter);
+    }
+
 
     public static void main(String args[]) {
         try {
