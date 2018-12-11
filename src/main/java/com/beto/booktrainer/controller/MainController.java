@@ -2,7 +2,7 @@ package com.beto.booktrainer.controller;
 
 import com.beto.booktrainer.persistence.BookDAO;
 import com.beto.booktrainer.persistence.ChapterDAO;
-import com.beto.booktrainer.view.BookChooseView;
+import com.beto.booktrainer.view.BookCreateView;
 import com.beto.booktrainer.view.BookListView;
 import com.beto.booktrainer.view.ChapterListView;
 
@@ -16,7 +16,7 @@ public class MainController {
     }
 
     public void renderBookChooseView() {
-        new BookChooseView().render(() -> renderChapterListView(), () -> renderBookListView());
+        new BookCreateView().render(() -> renderChapterListView(), () -> renderBookListView());
     }
 
     public void renderChapterListView(){
