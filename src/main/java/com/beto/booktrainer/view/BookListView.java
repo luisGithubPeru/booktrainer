@@ -7,18 +7,24 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class BookListView {
 
     private MyFrame myFrame = MyFrame.getInstance();
 
-    public void render(List list, final Runnable runOnButtonClick, Runnable runOnListSelection) {
+    public void render(List list, final Runnable runOnButtonClick, Consumer<Book> runOnListSelection) {
         JButton jButtonNewBook = new JButton("Nuevo Libro");
         JList jList = new JList();
         jList.setListData(list.toArray());
         jList.setVisibleRowCount(10);
         jButtonNewBook.addActionListener((e) -> runOnButtonClick.run());
-        jList.addListSelectionListener((e) -> runOnListSelection.run());
+        jList.addListSelectionListener((e) -> {
+            //int selectedIndex = jList.getSelectedIndex();
+            //if (selectedIndex != -1) {
+            runOnListSelection.accept((Book) jList.getSelectedValue());
+            //}
+        });
         JPanel jPanel = new JPanel();
         jPanel.add(jList);
         jPanel.add(jButtonNewBook);
