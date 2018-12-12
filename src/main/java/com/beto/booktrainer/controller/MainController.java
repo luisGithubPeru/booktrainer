@@ -31,6 +31,10 @@ public class MainController {
         );
     }
 
+    public void renderPageListView(){
+
+    }
+
 
 }
 
