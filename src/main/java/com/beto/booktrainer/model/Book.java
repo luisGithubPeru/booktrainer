@@ -35,6 +35,8 @@ public class Book {
         return name;
     }
 
-
+    public String getUrl() {
+        return url;
+    }
 }
 

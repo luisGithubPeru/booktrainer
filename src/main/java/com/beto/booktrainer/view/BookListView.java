@@ -15,16 +15,14 @@ public class BookListView {
 
     public void render(List list, final Runnable runOnButtonClick, Consumer<Book> runOnListSelection) {
         JButton jButtonNewBook = new JButton("Nuevo Libro");
+        jButtonNewBook.addActionListener((e) -> runOnButtonClick.run());
+
         JList jList = new JList();
         jList.setListData(list.toArray());
         jList.setVisibleRowCount(10);
-        jButtonNewBook.addActionListener((e) -> runOnButtonClick.run());
-        jList.addListSelectionListener((e) -> {
-            //int selectedIndex = jList.getSelectedIndex();
-            //if (selectedIndex != -1) {
-            runOnListSelection.accept((Book) jList.getSelectedValue());
-            //}
-        });
+        jList.addListSelectionListener((e) ->
+                runOnListSelection.accept((Book) jList.getSelectedValue())
+        );
         JPanel jPanel = new JPanel();
         jPanel.add(jList);
         jPanel.add(jButtonNewBook);

@@ -1,11 +1,9 @@
 package com.beto.booktrainer.controller;
 
 import com.beto.booktrainer.model.Book;
+import com.beto.booktrainer.model.Chapter;
 import com.beto.booktrainer.persistence.BookDAO;
-import com.beto.booktrainer.view.BookCreateView;
-import com.beto.booktrainer.view.BookListView;
-import com.beto.booktrainer.view.ChapterCreateView;
-import com.beto.booktrainer.view.ChapterListView;
+import com.beto.booktrainer.view.*;
 
 public class MainController {
 
@@ -20,19 +18,22 @@ public class MainController {
     }
 
     public void renderChapterListView(Book book) {
-        new ChapterListView().render(book.getChapterList(), () -> renderChapterCreateView(book), () -> renderBookListView());
+        new ChapterListView().render(book.getChapterList(), () -> renderChapterCreateView(book), () -> renderBookListView(), (Chapter chapter) -> renderChapterSimulatorView(book, chapter));
     }
 
     public void renderChapterCreateView(Book book) {
         new ChapterCreateView().render(null, (chapterName, chapterPages) -> {
-                    bookDAO.setChapter(book.getID(),chapterName,chapterPages);
+                    bookDAO.setChapter(book.getID(), chapterName, chapterPages);
                     renderChapterListView(book);
                 }
         );
     }
 
-    public void renderPageListView(){
-
+    public void renderChapterSimulatorView(Book book, Chapter chapter) {
+        try {
+            new ChapterSimulatorView(book, chapter);
+        } catch (Exception e) {
+        }
     }
 
 

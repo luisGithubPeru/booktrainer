@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Chapter {
     String name;
-    List pageList = new ArrayList();
+    List<Integer> pageList = new ArrayList();
 
     public Chapter(String name) {
         this.name = name;
@@ -18,6 +18,10 @@ public class Chapter {
     public void setPage(int firstPage, int lastPage) {
         for (int i = firstPage; i <= lastPage && i > 0; i++)
             pageList.add(i);
+    }
+
+    public List<Integer> getPageList() {
+        return pageList;
     }
 
     @Override
