@@ -12,7 +12,7 @@ public class BookDAO {
 
     public BookDAO() {
         bookList = new ArrayList();
-        Book newBook = new Book("Routines Manual 1");
+        Book newBook = new Book("Routines Manual 1", "C:\\Users\\beto\\IdeaProjects\\booktrainer\\Manual-de-Rutinas.pdf");
         Chapter newChapter = new Chapter("Chapter 1");
         newChapter.setPage(10, 20);
         newBook.setChapter(newChapter);

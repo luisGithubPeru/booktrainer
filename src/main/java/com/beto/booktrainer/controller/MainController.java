@@ -31,7 +31,7 @@ public class MainController {
 
     public void renderChapterSimulatorView(Book book, Chapter chapter) {
         try {
-            new ChapterSimulatorView(book, chapter);
+            new ChapterSimulatorView(book, chapter,()->renderChapterListView(book));
         } catch (Exception e) {
         }
     }
