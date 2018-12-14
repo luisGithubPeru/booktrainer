@@ -23,6 +23,13 @@ public class Book {
     public String getID() {
         return ID;
     }
+    public String getUrl() {
+        return url;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public void setChapter(Chapter chapter) {
         this.chapterList.add(chapter);
@@ -35,8 +42,6 @@ public class Book {
         return name;
     }
 
-    public String getUrl() {
-        return url;
-    }
+
 }
 

@@ -10,7 +10,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Random;
 
 public class ChapterSimulatorView {
@@ -48,7 +47,7 @@ public class ChapterSimulatorView {
         btnPrevious.addActionListener((e) -> {
             if (pageBuffer.size() > 1)
                 pageBuffer.pollLast();
-                this.showImage(pageBuffer.peekLast());
+            this.showImage(pageBuffer.peekLast());
         });
 
         btnNextRandom.addActionListener((e) -> {
