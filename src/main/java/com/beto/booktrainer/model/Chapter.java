@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Chapter {
+    String bookID;
     String name;
     List<Integer> pageList = new ArrayList();
 
@@ -11,17 +12,29 @@ public class Chapter {
         this.name = name;
     }
 
-    public void setPage(int pageNumber) {
-        pageList.add(pageNumber);
+    public Chapter(String bookID, String name) {
+        this(name);
+        this.bookID = bookID;
     }
 
-    public void setPage(int firstPage, int lastPage) {
-        for (int i = firstPage; i <= lastPage && i > 0; i++)
-            pageList.add(i);
+    public String getBookID() {
+        return bookID;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public List<Integer> getPageList() {
         return pageList;
+    }
+
+    public void setPageList(List<Integer> pageList) {
+        this.pageList = pageList;
+    }
+
+    public void addPage(int pageNumber) {
+        pageList.add(pageNumber);
     }
 
     @Override

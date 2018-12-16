@@ -51,7 +51,8 @@ public class ChapterSimulatorView {
         });
 
         btnNextRandom.addActionListener((e) -> {
-            int randomPage = this.getRandomPage();
+            int randomPage;
+            while ((randomPage = this.getRandomPage()) == pageBuffer.peekLast()) {}
             this.pageBuffer.addLast(randomPage);
             this.showImage(randomPage);
         });
@@ -84,7 +85,7 @@ public class ChapterSimulatorView {
 
     public int getRandomPage() {
         int randomPageIndex = new Random().nextInt(chapter.getPageList().size());
-        return chapter.getPageList().get(randomPageIndex);
+        return chapter.getPageList().get(randomPageIndex) - 1 ;
     }
 
 

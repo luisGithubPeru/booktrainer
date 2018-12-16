@@ -1,6 +1,6 @@
 package com.beto.booktrainer;
 
-import com.beto.booktrainer.controller.MainController;
+import com.beto.booktrainer.presentation.MainController;
 
 /**
  * Hello world!
